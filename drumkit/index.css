@@ -1,0 +1,55 @@
+html {
+	font-size: 5px;
+	background: url(./image.jpg) bottom center;
+	background-size: cover;
+	background-repeat: none;
+}
+
+.container {
+	padding-left: 111px;
+}
+.returnlink {
+	color: white font-size15px;
+	font-size: 25px;
+	padding-top: 33px;
+}
+.returnlink :hover {
+	color: white font-size15px;
+	font-size: 28px;
+
+	color: red;
+}
+
+.key {
+	border: 3px solid white;
+	border-radius: 3px;
+	margin: 1rem;
+	font-size: 1.5rem;
+	padding: 1rem 0.5rem;
+	transition: all 0.07s;
+	width: 100px;
+	text-align: center;
+	color: white;
+	background: rgba(0, 0, 0, 0.1);
+	text-shadow: 0 0 5rem black;
+	margin-top: 180px;
+}
+
+.playing {
+	transform: scale(1.1);
+	border-color: cornflowerblue;
+	box-shadow: 0 0 1rem blue;
+}
+kdb {
+	display: block;
+	font-size: 4rem;
+}
+.keys {
+	display: inline-block;
+}
+.sound {
+	font-size: 1.2rems;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	color: #ffc600;
+}

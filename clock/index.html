@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS Clock</title>
+</head>
+
+<body>
+  <div class="clock">
+    <div class="clockface">
+      <div class="hand hour-hand"></div>
+      <div class="hand min-hand"></div>
+      <div class="hand sec-hand"></div>
+    </div>
+  </div>
+
+  <div>
+    <ul>
+      <li>
+        <a href="../index.html">Root page</a>
+      </li>
+    </ul>
+  </div>
+</body>
+
+<style>
+  html {
+    background-color: cornflowerblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  body {
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+  }
+
+  .clock {
+    width: 30rem;
+    height: 30rem;
+    border: 20px solid yellow;
+    border-radius: 50%;
+    position: relative;
+    padding: 2rem;
+    box-shadow: 0 0 0 4px rgbs(0, 0, 0, .3),
+    inset 0 0 0 3px grey,
+    inset 0 0 10px black,
+    0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+  }
+
+  .clock-face {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transform: translateY(-2px);
+    position: absolute;
+    top: 50%
+  }
+
+  .hand {
+    width: 50%;
+    height: 1%;
+    background: black;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.04s;
+    transition-timing-function: cubic-bezier(0.38, 3.39, 0.44, 1);
+  }
+</style>
+<script>
+  let secondsHand = document.querySelector('.sec-hand');
+  let minutesHand = document.querySelector('.min-hand');
+  let hoursHand = document.querySelector('.hour-hand');
+
+  function setDate() {
+    let now = new Date();
+
+    let secs = now.getSeconds()
+    let mins = now.getMinutes();
+    let hours = now.getHours();
+
+    let secDegrees = ((secs / 60) * 360) + 90;
+    let minsDegrees = ((mins / 60) * 360) + 90;
+    let hoursDegrees = ((hours / 12) * 360) + 90;
+
+    secondsHand.style.transform = `rotate(${secDegrees}deg)`;
+    minutesHand.style.transform = `rotate(${minsDegrees}deg)`;
+    hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
+  }
+  setInterval(setDate, 1000);
+</script>
+
+</html>
