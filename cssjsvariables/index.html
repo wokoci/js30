@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>CSS Variables and JS</title>
+  <style>
+     :root {
+      --background: green;
+      --base: #4286f4;
+      --spacing: 10px;
+      --blur: 1px;
+      --alignemnt: block;
+      --parding: 20px;
+      --arange: left;
+      --controlFontSize: 30px;
+    }
+
+.js {
+  color: var(--base);
+}
+
+ 
+
+    .controls {
+      float: var(--arange);
+      padding-right: var(--parding);
+      margin: 0 100px;
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+ 
+    label {
+      font-size: var(--controlFontSize);
+    }
+
+    body{
+      background-color: rgb(231, 221, 221);
+    }
+
+    #color {
+      margin: 0 250px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+     <h2>Update CSS Variable with
+    <span class='js'>Javascript</span>
+  </div>
+ 
+  </h2>
+  <div class="controls">
+    <div>
+      <label for="scapcing">Spacing:</label>
+      <input type="range" id="spacing" max="200" min="10" name='spacing' value="10" data-sizing='px'>
+      <label for="blur">Blur:</label>
+      <input type="range" name="blur" id="blur" max="25" min="0" value="1" data-sizing='px'>
+    </div>
+    <div>
+      <input type="color" name="base" id="color" value="#4286f4">
+    </div>
+  </div>
+
+  <div>
+    <img src="http://lorempixel.com/640/480/fashion" alt="image of interest" id="image" name=base>
+  </div>
+
+  <div>
+    <h4>
+      <a href="../index.html"> Return to home page </a>
+    </h4>
+  </div>
+
+
+  <script>
+    let inputs = document.querySelectorAll('.controls input');
+    function handleUpdate() {
+      let suffix = this.dataset.sizing || '';
+      console.log(suffix);
+      console.log(this.name);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+    inputs.forEach(input => {
+      input.addEventListener('change', handleUpdate);
+      input.addEventListener('mousemove', handleUpdate);
+    });
+  </script>
+</body>
+</html>
