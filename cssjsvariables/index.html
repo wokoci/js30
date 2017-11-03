@@ -82,10 +82,16 @@
 
 
   <script>
+
+   let item =document.getElementById('spacing');
+    let res =getComputedStyle(item).getPropertyValue("--base");
+   console.log(res);
+
+
     let inputs = document.querySelectorAll('.controls input');
     function handleUpdate() {
       let suffix = this.dataset.sizing || '';
-      console.log(suffix);
+      console.log(suffix); 
       console.log(this.name);
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
