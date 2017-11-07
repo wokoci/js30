@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+const cities =[];
+
+let prom = fetch(endpoint)
+                .then(blob =>blob.json())
+                .then(data => cities.push(...data))
+function findMatches(wordToFind, citeis){
+   return cities.filter(place=>{
+    const regex =new RegExp(wordToFind, 'gi');
+     return place.city.match(regex) || place.state.match(regex)
+   })
+}
+
+function displayMatches(){
+   let matchArray = findMatches(this.value, cities);
+  let html =matchArray.map(place =>{
+    return `
+        <li>
+          <span class='name'>${place.city}, ${place.state}</span>
+          <span class='population'>${place.population}</span>
+        </li>
+    `
+  })
+
+  suggestions.innerHTML =html;
+}
+
+let searcgInput =document.querySelector('.search');
+let suggestions =document.querySelector('.suggestions');
+
+searcgInput.addEventListener('keyup',displayMatches);
+
+</script>
+
+
+<ul>
+  <li>
+    <a href="../index.html"> return to home page</a>
+  </li>
+</ul>
+  </body>
+</html>
