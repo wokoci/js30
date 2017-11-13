@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    let p;
+    function makeGreen() {
+      p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('this is a regular console log output');
+
+    // Interpolated
+    console.log('This is a text that can take a string named%s ', 'Jeffrey');
+
+    // Styled
+    // need to figure this out
+    console.log('%c This will be styled by Jeff', 'color:red; font-size:20px; font-style:italics;');
+
+
+    // warning!
+    console.warn('this is a warning in the console.');
+
+
+    // Error :|
+    console.error('this is an error from the console alos');
+
+    // Info
+
+    console.info('this is moch better at handling the console stuff');
+
+    // Testing
+    console.assert(1==2,'The values do not matchup')
+
+    // clearing
+    //console.clear();   // this is a head ache if at the end of a script.
+
+    // Viewing DOM Elements
+     let element =document.querySelector('p');
+    console.dir(element.textContent)
+
+    // Grouping together
+
+    dogs.forEach(dog=>{
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age*7 } dog years old`);
+      console.groupEnd(`${dog.name}`)
+    })
+
+    // counting
+    console.count('jeffrey');
+    console.count('john');
+    console.count('john');
+
+    // timing
+    console.time('fetch');
+    fetch('https://api.github.com/users/wokoci')
+         .then(data =>data.json())
+         .then(data=>console.log(data));
+  </script>
+
+<ul>
+  <li>
+    <h4><a href="../index.html">Return to home page</a></h4>
+  </li>
+</ul>
+
+</body>
+</html>
