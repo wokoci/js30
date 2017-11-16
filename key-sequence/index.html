@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body id="point">
+<script>
+  let item = document.getElementById('point');
+  let keys =[];
+  const secretCode ='javascript';
+  window.addEventListener('keyup', (e)=>{
+    keys.push(e.key);
+    keys.splice(-secretCode.length-1, keys.length-secretCode.length);
+    console.log(keys); 
+     if(keys.join('').includes(secretCode)){
+       item.innerHTML=secretCode + "  :was the secret code";
+     };
+  });
+</script>
+<ul>
+  <li>
+    <h4><a href="../index.html">Return the Home Page</a></h4>
+  </li>
+</ul>
+</body>
+</html>
