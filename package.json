@@ -1,0 +1,14 @@
+{
+  "name": "js30",
+  "version": "1.0.0",
+  "description": "Project covering js 30 activities",
+  "main": "scripts.js",
+  "scripts": {
+    "start": "browser-sync start --directory --server --files '*.css, *.html, *.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.5"
+  }
+}
